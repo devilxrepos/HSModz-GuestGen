@@ -1,0 +1,37 @@
+{
+  "FF-20260208023420-957A831F": {
+    "license_key": "FF-20260208023420-957A831F",
+    "username": "HSModz",
+    "email": "mujahidulislam809070@gmail.com",
+    "created_at": "2026-02-08T02:34:20.595932",
+    "expires_at": "2026-05-19T02:34:20.609979",
+    "is_active": true,
+    "usage_count": 2,
+    "max_accounts": 10000,
+    "generated_accounts": 37,
+    "last_used": "2026-02-08T03:13:25.855557"
+  },
+  "FF-20260208031650-6866646C": {
+    "license_key": "FF-20260208031650-6866646C",
+    "username": "Mujahid",
+    "email": "mujahidul909080@gmail.com",
+    "created_at": "2026-02-08T03:16:50.822648",
+    "expires_at": "2026-03-10T03:16:50.822663",
+    "is_active": true,
+    "usage_count": 1,
+    "max_accounts": 1000,
+    "generated_accounts": 50,
+    "last_used": "2026-02-08T08:50:52.971768"
+  },
+  "FF-20260208090354-69F30CB1": {
+    "license_key": "FF-20260208090354-69F30CB1",
+    "username": "admin",
+    "email": "yiugyyw90@gmail.com",
+    "created_at": "2026-02-08T09:03:54.377627",
+    "expires_at": "2026-03-10T09:03:54.377640",
+    "is_active": true,
+    "usage_count": 0,
+    "max_accounts": 1000,
+    "generated_accounts": 0
+  }
+}
