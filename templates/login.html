@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login | Free Fire Generator</title>
+    <style>
+        body { 
+            font-family: 'Arial', sans-serif; 
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+            color: white;
+            min-height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        /* Animated Background */
+        .bg-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        
+        .particle {
+            position: absolute;
+            background: radial-gradient(circle, rgba(34, 197, 94, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+        }
+        
+        @keyframes float {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(100px, 100px) rotate(90deg); }
+            50% { transform: translate(200px, 0) rotate(180deg); }
+            75% { transform: translate(100px, -100px) rotate(270deg); }
+            100% { transform: translate(0, 0) rotate(360deg); }
+        }
+        
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .login-box { 
+            width: 420px;
+            padding: 40px;
+            background: rgba(2, 6, 23, 0.85);
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0, 255, 153, 0.3),
+                        0 0 100px rgba(34, 197, 94, 0.2),
+                        inset 0 0 20px rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(34, 197, 94, 0.3);
+            position: relative;
+            overflow: hidden;
+            animation: glow 3s infinite alternate;
+        }
+        
+        @keyframes glow {
+            0% { box-shadow: 0 20px 50px rgba(0, 255, 153, 0.3),
+                             0 0 80px rgba(34, 197, 94, 0.2),
+                             inset 0 0 20px rgba(255, 255, 255, 0.1); }
+            100% { box-shadow: 0 20px 50px rgba(0, 255, 153, 0.4),
+                             0 0 120px rgba(34, 197, 94, 0.3),
+                             inset 0 0 20px rgba(255, 255, 255, 0.15); }
+        }
+        
+        .login-box::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #22c55e, #3b82f6, #22c55e);
+            z-index: -1;
+            border-radius: 22px;
+            animation: borderGlow 2s infinite alternate;
+        }
+        
+        @keyframes borderGlow {
+            0% { filter: blur(5px); opacity: 0.5; }
+            100% { filter: blur(10px); opacity: 0.8; }
+        }
+        
+        h2 { 
+            text-align: center; 
+            color: #22c55e;
+            margin-bottom: 10px;
+            font-size: 32px;
+            text-shadow: 0 0 10px rgba(34, 197, 94, 0.5),
+                         0 0 20px rgba(34, 197, 94, 0.3);
+            animation: textGlow 2s infinite alternate;
+        }
+        
+        @keyframes textGlow {
+            0% { text-shadow: 0 0 10px rgba(34, 197, 94, 0.5),
+                              0 0 20px rgba(34, 197, 94, 0.3); }
+            100% { text-shadow: 0 0 20px rgba(34, 197, 94, 0.8),
+                              0 0 40px rgba(34, 197, 94, 0.5),
+                              0 0 60px rgba(34, 197, 94, 0.3); }
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #94a3b8;
+            margin-bottom: 30px;
+            font-size: 16px;
+            letter-spacing: 1px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+        
+        label { 
+            display: block; 
+            margin-bottom: 10px;
+            color: #cbd5e1;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        input { 
+            width: 100%; 
+            padding: 16px; 
+            border: 2px solid rgba(34, 197, 94, 0.2);
+            border-radius: 10px;
+            background: rgba(30, 41, 59, 0.6);
+            color: white;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            letter-spacing: 1px;
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: #22c55e;
+            box-shadow: 0 0 20px rgba(34, 197, 94, 0.4);
+            background: rgba(30, 41, 59, 0.8);
+            transform: scale(1.02);
+        }
+        
+        button { 
+            width: 100%; 
+            padding: 16px; 
+            margin-top: 10px;
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 1px;
+        }
+        
+        button:hover { 
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(34, 197, 94, 0.4);
+        }
+        
+        button:active {
+            transform: translateY(-1px);
+        }
+        
+        button::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: rotate(45deg);
+            animation: buttonShine 3s infinite;
+        }
+        
+        @keyframes buttonShine {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
+        }
+        
+        .error { 
+            color: #ef4444;
+            text-align: center;
+            margin-bottom: 25px;
+            padding: 15px;
+            background: rgba(239, 68, 68, 0.1);
+            border-radius: 10px;
+            border: 2px solid rgba(239, 68, 68, 0.3);
+            font-size: 14px;
+            animation: shake 0.5s ease-in-out;
+        }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+        
+        .links {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            font-size: 14px;
+        }
+        
+        .links a {
+            color: #60a5fa;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            background: rgba(96, 165, 250, 0.1);
+        }
+        
+        .links a:hover {
+            background: rgba(96, 165, 250, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(96, 165, 250, 0.2);
+        }
+        
+        .info-box {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(34, 197, 94, 0.1));
+            border: 2px solid rgba(59, 130, 246, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 25px;
+            font-size: 14px;
+            color: #cbd5e1;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { border-color: rgba(59, 130, 246, 0.3); }
+            50% { border-color: rgba(34, 197, 94, 0.5); }
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            animation: fadeIn 3s ease-in-out;
+            position: relative;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .copyright::before {
+            content: '★';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #22c55e;
+            font-size: 20px;
+            animation: spin 4s infinite linear;
+        }
+        
+        @keyframes spin {
+            0% { transform: translateX(-50%) rotate(0deg); }
+            100% { transform: translateX(-50%) rotate(360deg); }
+        }
+        
+        .copyright-text {
+            background: linear-gradient(90deg, #22c55e, #3b82f6, #22c55e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: bold;
+            animation: gradientShift 3s infinite alternate;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+        
+        .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .logo-text {
+            font-size: 48px;
+            font-weight: bold;
+            background: linear-gradient(45deg, #22c55e, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(34, 197, 94, 0.3);
+            animation: logoGlow 2s infinite alternate;
+        }
+        
+        @keyframes logoGlow {
+            0% { text-shadow: 0 0 30px rgba(34, 197, 94, 0.3); }
+            100% { text-shadow: 0 0 60px rgba(34, 197, 94, 0.6),
+                             0 0 90px rgba(34, 197, 94, 0.4); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animation" id="bgAnimation"></div>
+    
+    <div class="login-container">
+        <div class="login-box">
+            <div class="logo">
+                <div class="logo-text">🎮 FF GENERATOR</div>
+            </div>
+            
+            <h2>LICENSE VERIFICATION</h2>
+            <div class="subtitle">Enter your license key to access premium features</div>
+            
+            {% if error %}
+            <div class="error">{{ error }}</div>
+            {% endif %}
+            
+            <form method="post">
+                <div class="form-group">
+                    <label for="license_key">🔑 LICENSE KEY</label>
+                    <input type="text" id="license_key" name="license_key" 
+                           placeholder="FF-YYYYMMDD-XXXX" 
+                           required autofocus>
+                </div>
+                
+                <button type="submit">
+                    <span style="display: block; transform: translateY(1px);">🚀 ACCESS GENERATOR</span>
+                </button>
+            </form>
+            
+            <div class="info-box">
+                <strong style="color: #60a5fa;">ℹ️ NEED A LICENSE?</strong><br>
+                <div style="margin-top: 10px;">
+                    • Contact administrator for registration<br>
+                    • Visit <a href="/register" style="color: #22c55e; font-weight: bold;">/register</a> with secret key
+                </div>
+            </div>
+            
+            <div class="links">
+                <a href="/register">📋 REGISTER LICENSE</a>
+                <a href="/admin">⚙️ ADMIN PANEL</a>
+            </div>
+            
+            <div class="copyright">
+                <div class="copyright-text">
+                    ©COPYRIGHT BY HS MUJAHID YT & ®ALL RIGHTS RESERVED BY HS MODZ.<br>
+                    THANK YOU FOR SUPPORTING US
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Create animated background particles
+        function createParticles() {
+            const bg = document.getElementById('bgAnimation');
+            const particleCount = 20;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                // Random size and position
+                const size = Math.random() * 200 + 50;
+                const x = Math.random() * 100;
+                const y = Math.random() * 100;
+                const duration = Math.random() * 20 + 15;
+                
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${x}%`;
+                particle.style.top = `${y}%`;
+                particle.style.animationDuration = `${duration}s`;
+                particle.style.animationDelay = `${Math.random() * 5}s`;
+                
+                // Random color
+                const colors = [
+                    'rgba(34, 197, 94, 0.1)',
+                    'rgba(59, 130, 246, 0.1)',
+                    'rgba(168, 85, 247, 0.1)',
+                    'rgba(239, 68, 68, 0.1)'
+                ];
+                particle.style.background = `radial-gradient(circle, ${colors[Math.floor(Math.random() * colors.length)]} 0%, transparent 70%)`;
+                
+                bg.appendChild(particle);
+            }
+        }
+        
+        // Auto-focus and animation
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+            document.getElementById('license_key').focus();
+            
+            // Add floating effect to login box
+            const loginBox = document.querySelector('.login-box');
+            let angle = 0;
+            
+            function floatBox() {
+                const y = Math.sin(angle) * 3;
+                loginBox.style.transform = `translateY(${y}px)`;
+                angle += 0.02;
+                requestAnimationFrame(floatBox);
+            }
+            
+            floatBox();
+            
+            // Add key input animation
+            const licenseInput = document.getElementById('license_key');
+            licenseInput.addEventListener('input', function() {
+                if (this.value.length > 0) {
+                    this.style.boxShadow = '0 0 25px rgba(34, 197, 94, 0.5)';
+                } else {
+                    this.style.boxShadow = '';
+                }
+            });
+            
+            // Add example button
+            const exampleBtn = document.createElement('button');
+            exampleBtn.type = 'button';
+            exampleBtn.textContent = '📋 SHOW FORMAT';
+            exampleBtn.style.cssText = `
+                background: rgba(59, 130, 246, 0.2);
+                color: #60a5fa;
+                border: 2px solid rgba(59, 130, 246, 0.3);
+                padding: 10px 15px;
+                border-radius: 8px;
+                margin-top: 15px;
+                cursor: pointer;
+                font-size: 12px;
+                font-weight: bold;
+                width: 100%;
+                transition: all 0.3s ease;
+                letter-spacing: 1px;
+            `;
+            exampleBtn.onmouseover = function() {
+                this.style.background = 'rgba(59, 130, 246, 0.3)';
+                this.style.transform = 'translateY(-2px)';
+                this.style.boxShadow = '0 5px 15px rgba(59, 130, 246, 0.2)';
+            };
+            exampleBtn.onmouseout = function() {
+                this.style.background = 'rgba(59, 130, 246, 0.2)';
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = 'none';
+            };
+            exampleBtn.onclick = function() {
+                const example = document.createElement('div');
+                example.style.cssText = `
+                    background: rgba(30, 41, 59, 0.8);
+                    border-radius: 8px;
+                    padding: 15px;
+                    margin-top: 10px;
+                    font-family: 'Courier New', monospace;
+                    font-size: 14px;
+                    color: #22c55e;
+                    text-align: center;
+                    border: 2px dashed rgba(34, 197, 94, 0.3);
+                    animation: fadeIn 0.5s ease-in-out;
+                `;
+                example.textContent = 'FF-20240208-A1B2C3D4';
+                this.parentNode.insertBefore(example, this.nextSibling);
+                this.style.display = 'none';
+                
+                // Auto remove after 5 seconds
+                setTimeout(() => {
+                    example.remove();
+                    this.style.display = 'block';
+                }, 5000);
+            };
+            
+            document.querySelector('form').appendChild(exampleBtn);
+        });
+    </script>
+</body>
+</html>

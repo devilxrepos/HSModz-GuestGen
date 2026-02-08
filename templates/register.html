@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register License | Free Fire Generator</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .register-box { 
+            width: 380px;
+            padding: 40px;
+            background: rgba(2, 6, 23, 0.9);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 255, 153, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(34, 197, 94, 0.2);
+        }
+        h2 { 
+            text-align: center; 
+            color: #22c55e;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #94a3b8;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label { 
+            display: block; 
+            margin-bottom: 8px;
+            color: #cbd5e1;
+            font-size: 14px;
+        }
+        input { 
+            width: 100%; 
+            padding: 14px; 
+            border: 1px solid #334155;
+            border-radius: 6px;
+            background: rgba(30, 41, 59, 0.8);
+            color: white;
+            box-sizing: border-box;
+            transition: border 0.3s;
+        }
+        input:focus {
+            outline: none;
+            border-color: #22c55e;
+            box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.1);
+        }
+        button { 
+            width: 100%; 
+            padding: 14px; 
+            margin-top: 10px;
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            border: none;
+            border-radius: 6px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        button:hover { 
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(34, 197, 94, 0.4);
+        }
+        .error { 
+            color: #ef4444;
+            text-align: center;
+            margin-bottom: 20px;
+            padding: 10px;
+            background: rgba(239, 68, 68, 0.1);
+            border-radius: 6px;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 25px;
+            color: #60a5fa;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        .info-box {
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 6px;
+            padding: 15px;
+            margin-top: 20px;
+            font-size: 12px;
+            color: #94a3b8;
+        }
+       .copyright {
+    text-align: center;
+    margin-top: 40px;
+    padding: 20px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    animation: fadeIn 3s ease-in-out;
+}
+
+.copyright-text {
+    background: linear-gradient(90deg, #22c55e, #3b82f6, #22c55e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+    animation: gradientShift 3s infinite alternate;
+    background-size: 200% auto;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+           
+        
+    </style>
+</head>
+<body>
+    <div class="register-box">
+        <h2>🔑 Register License</h2>
+        <div class="subtitle">Get your license key to use the Free Fire Generator</div>
+        
+        {% if error %}
+        <div class="error">{{ error }}</div>
+        {% endif %}
+        
+        <form method="post">
+            <div class="form-group">
+                <label for="username">Username *</label>
+                <input type="text" id="username" name="username" placeholder="Enter your username" required autofocus>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="your.email@example.com">
+            </div>
+            
+            <div class="form-group">
+                <label for="secret_key">Secret Key *</label>
+                <input type="password" id="secret_key" name="secret_key" placeholder="Enter secret key" required>
+                <small style="color: #94a3b8; font-size: 12px;">Contact administrator for secret key</small>
+            </div>
+            
+            <button type="submit">Generate License</button>
+        </form>
+        
+        <div class="info-box">
+            📝 <strong>Note:</strong> Your license will be valid for {{ LICENSE_EXPIRY_DAYS }} days and can generate up to 1000 accounts.
+        </div>
+        
+        <a href="/login" class="back-link">← Already have a license? Login here</a>
+        <div class="copyright">
+    <div class="copyright-text">
+        ©COPYRIGHT BY HS MUJAHID YT & ®ALL RIGHTS RESERVED BY HS MODZ.<br>
+        THANK YOU FOR SUPPORTING US
+    </div>
+</div>
+    </div>
+</body>
+</html>
